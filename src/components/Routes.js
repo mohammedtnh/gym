@@ -1,17 +1,15 @@
-// import Home from "./Home";
-// import ProductList from "./ProductList";
-// import ProductDetail from "./ProductDetails";
+import ClassList from "./class/ClassList";
+// import ClassDetail from "./ClassDetails";
 import GymForm from "./gym/GymForm";
+import ClassForm from "./class/ClassForm";
 import { Route, Switch } from "react-router";
-// import GymDetail from "./GymDetails";
+import GymDetail from "./gym/GymDetail";
 import GymList from "./gym/GymList";
 import Signup from "./Signup";
 import { useSelector } from "react-redux";
 import Signin from "./Signin";
 const Routes = () => {
-  const user = useSelector((state) => state.authReducer.user);
-  console.log(user);
-  //   const products = useSelector((state) => state.productReducer.products);
+  const classes = useSelector((state) => state.classReducer.classes);
 
   return (
     <Switch>
@@ -24,24 +22,30 @@ const Routes = () => {
       <Route path="/gyms/new">
         <GymForm />
       </Route>
+      <Route path="/gyms/:gymId/classes/new">
+        <ClassForm />
+      </Route>
+      <Route path="/classes">
+        <ClassList classes={classes} />
+      </Route>
+      <Route path="/gyms/:gymId">
+        <GymDetail />
+      </Route>
       {/* <Route
-        path={["/gyms/:gymId/products/new", "/products/:productSlug/edit"]}
+        path={["/gyms/:gymId/classes/new", "/classes/:productSlug/edit"]}
       >
         <GymForm />
       </Route>
-      <Route path="/products/:productSlug">
-        <ProductDetail />
+      <Route path="/classes/:productSlug">
+        <ClassDetail />
       </Route>
-      <Route path="/products">
-        <ProductList products={products} />
-      </Route>
-      <Route path="/gyms/:gymSlug">
-        <GymDetail />
-      </Route> */}
+  */}
       <Route path="/gyms">
         <GymList />
       </Route>
-      <Route path="/">{/* <App /> */}</Route>
+      <Route path="/">
+        <></>
+      </Route>
     </Switch>
   );
 };

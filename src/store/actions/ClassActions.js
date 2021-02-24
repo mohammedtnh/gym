@@ -21,8 +21,9 @@ export const createClass = (newClass) => {
       const formData = new FormData();
       for (const key in newClass) formData.append(key, newClass[key]);
 
+      console.log("ppppppppppppppppppp", newClass);
       const res = await instance.post(
-        `/shops/${newClass.shopId}/classes`,
+        `/gyms/${newClass.GymId}/classes`,
         formData
       );
       dispatch({

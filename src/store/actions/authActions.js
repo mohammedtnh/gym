@@ -48,7 +48,7 @@ export const signout = (history) => {
 
 export const checkForToken = () => (dispatch) => {
   const token = localStorage.getItem("myToken");
-  console.log(token);
+  // console.log(token);
   if (token) {
     const user = decode(token);
     const currentTime = Date.now();
